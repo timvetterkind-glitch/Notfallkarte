@@ -3,526 +3,600 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notfallkarte Tim Vetterkind</title>
+<title>Notfallkarte</title>
+
+<script>
+const daten = {
+  name: "TIM RENE VETTERKIND",
+  geburtsdatum: "15.05.2001",
+
+  blutgruppe: "0+",
+  allergien: "KEINE",
+  medikamente: "KEINE",
+
+  krankenkasse: "SANITAS",
+  wohnadresse1: "Glasiweg 10",
+  wohnadresse2: "6242 Wauwil",
+  wohnadresse3: "Schweiz",
+
+  regaGoenner: "JA",
+  organspender: "JA",
+
+  kontakt1Name: "LINDA HENKE",
+  kontakt1Rolle: "EHEPARTNERIN",
+  kontakt1TelefonAnzeige: "+41 79 615 00 27",
+  kontakt1TelefonLink: "+41796150027",
+
+  kontakt2Name: "STEFAN VETTERKIND",
+  kontakt2Rolle: "VATER",
+  kontakt2TelefonAnzeige: "+49 171 7879090",
+  kontakt2TelefonLink: "+491717879090",
+
+  kontakt3Name: "MANUELA VETTERKIND",
+  kontakt3Rolle: "MUTTER",
+  kontakt3TelefonAnzeige: "+49 1512 1009264",
+  kontakt3TelefonLink: "+4915121009264",
+
+  fotoDatei: "tim.jpg"
+};
+</script>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  padding:18px;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#eeeeee;
-  color:#000;
+* {
+  box-sizing: border-box;
 }
 
-.card{
-  max-width:1200px;
-  margin:auto;
-  background:#fff;
-  border-radius:24px;
-  overflow:hidden;
-  display:grid;
-  grid-template-columns:210px 1fr;
-  box-shadow:0 8px 30px rgba(0,0,0,.18);
-  border:1px solid #ddd;
+body {
+  margin: 0;
+  padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #eeeeee;
+  color: #000;
 }
 
-.sidebar{
-  background:#e00000;
-  color:#fff;
-  padding:28px 18px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
+.wrapper {
+  max-width: 850px;
+  margin: auto;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,.18);
 }
 
-.cross{
-  width:135px;
-  height:135px;
-  border:6px solid #fff;
-  border-radius:50%;
-  position:relative;
+.header {
+  background: #d80000;
+  color: white;
+  padding: 18px;
+  text-align: center;
 }
 
-.cross:before,
-.cross:after{
-  content:"";
-  position:absolute;
-  background:#fff;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  border-radius:2px;
+.header-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: .5px;
 }
 
-.cross:before{width:75px;height:28px}
-.cross:after{width:28px;height:75px}
-
-.vertical-title{
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-  font-size:46px;
-  font-weight:900;
-  letter-spacing:2px;
+.header-sub {
+  font-size: 14px;
+  margin-top: 6px;
+  font-weight: 700;
 }
 
-.side-text{
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-  font-size:17px;
-  font-weight:700;
-  line-height:1.5;
-  text-align:center;
+.content {
+  padding: 18px;
 }
 
-.heart{
-  font-size:70px;
-  line-height:1;
+.top {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 18px;
+  align-items: start;
 }
 
-.main{
-  padding:28px 32px 0;
+.warning {
+  color: #d80000;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 14px;
 }
 
-.top{
-  display:grid;
-  grid-template-columns:1fr 150px 220px;
-  gap:22px;
-  align-items:start;
+.name {
+  font-size: 42px;
+  font-weight: 950;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 14px;
 }
 
-.alert{
-  color:#d60000;
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:.5px;
-  margin-bottom:22px;
+.birth {
+  font-size: 20px;
+  font-weight: 900;
 }
 
-.name{
-  font-size:56px;
-  font-weight:950;
-  line-height:1;
-  margin-bottom:20px;
-  text-transform:uppercase;
+.birth span {
+  color: #d80000;
+  font-size: 24px;
+  margin-left: 8px;
 }
 
-.birth{
-  font-size:26px;
-  font-weight:800;
-  margin-bottom:26px;
+.photo {
+  width: 180px;
+  height: 230px;
+  border: 3px solid #d80000;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #555;
+  font-weight: 900;
 }
 
-.birth span{
-  color:#d60000;
-  font-size:34px;
-  margin-left:10px;
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.photo{
-  width:150px;
-  height:220px;
-  border-radius:12px;
-  border:2px solid #222;
-  background:#ddd;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  font-weight:800;
-  color:#555;
-  overflow:hidden;
+.section {
+  margin-top: 18px;
 }
 
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.section-title {
+  background: #000;
+  color: white;
+  font-size: 17px;
+  font-weight: 900;
+  padding: 9px 13px;
+  border-radius: 9px 9px 0 0;
+  display: inline-block;
 }
 
-.qrbox{
-  border:3px solid #d60000;
-  border-radius:12px;
-  overflow:hidden;
-  text-align:center;
-  background:#fff;
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid #d80000;
+  border-radius: 0 12px 12px 12px;
+  overflow: hidden;
 }
 
-.qr{
-  height:180px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:18px;
-  font-weight:900;
-  color:#333;
-  padding:10px;
+.med-box {
+  padding: 16px;
+  border-right: 2px solid #d80000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.qr img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+.med-box:last-child {
+  border-right: none;
 }
 
-.qrlabel{
-  background:#d60000;
-  color:#fff;
-  padding:12px 8px;
-  font-size:18px;
-  font-weight:900;
+.med-box.red {
+  background: #d80000;
+  color: white;
 }
 
-.medgrid{
-  display:grid;
-  grid-template-columns:1.1fr 1fr 1fr;
-  border:2px solid #e00000;
-  border-radius:12px;
-  overflow:hidden;
-  margin-bottom:30px;
+.icon {
+  font-size: 32px;
 }
 
-.meditem{
-  padding:18px;
-  min-height:100px;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  border-right:2px solid #e00000;
+.label {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-.meditem:last-child{border-right:none}
-
-.meditem.red{
-  background:#e00000;
-  color:#fff;
+.value {
+  font-size: 30px;
+  font-weight: 950;
+  margin-top: 3px;
 }
 
-.icon{
-  font-size:44px;
-  font-weight:900;
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #bbb;
+  border-radius: 0 12px 12px 12px;
+  overflow: hidden;
 }
 
-.label{
-  font-size:18px;
-  font-weight:900;
+.info-box {
+  padding: 15px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
 }
 
-.value{
-  font-size:42px;
-  font-weight:950;
-  line-height:1;
+.info-box:nth-child(2),
+.info-box:nth-child(4) {
+  border-right: none;
 }
 
-.content{
-  display:grid;
-  grid-template-columns:1fr 1fr 1.25fr;
-  gap:18px;
-  margin-bottom:22px;
+.info-box:nth-child(3),
+.info-box:nth-child(4) {
+  border-bottom: none;
 }
 
-.panel{
-  border:2px solid #111;
-  border-radius:10px;
-  overflow:hidden;
-  background:#fff;
+.info-icon {
+  color: #d80000;
+  font-size: 28px;
+  min-width: 34px;
+  text-align: center;
 }
 
-.panel-title{
-  background:#000;
-  color:#fff;
-  display:inline-block;
-  padding:10px 16px;
-  font-size:18px;
-  font-weight:900;
-  border-radius:0 0 8px 0;
+.info-title {
+  font-size: 15px;
+  font-weight: 950;
+  text-transform: uppercase;
 }
 
-.panel-body{
-  padding:22px;
+.info-value {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 4px;
+  line-height: 1.3;
 }
 
-.person{
-  display:flex;
-  gap:16px;
-  align-items:flex-start;
-  margin-bottom:20px;
+.yes {
+  color: #d80000;
+  font-size: 24px;
+  font-weight: 950;
 }
 
-.person-icon{
-  background:#e00000;
-  color:#fff;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:34px;
+.contacts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
-.person-name{
-  font-size:26px;
-  font-weight:950;
+.contact-card {
+  border: 1px solid #bbb;
+  border-radius: 12px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
 }
 
-.role{
-  color:#d60000;
-  font-size:18px;
-  font-weight:900;
-  margin-top:4px;
+.contact-main {
+  display: flex;
+  align-items: center;
+  gap: 13px;
 }
 
-.phone{
-  font-size:31px;
-  font-weight:950;
-  margin:20px 0;
+.person-icon {
+  background: #d80000;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
 }
 
-.call{
-  display:block;
-  background:#e00000;
-  color:#fff;
-  text-decoration:none;
-  text-align:center;
-  padding:14px;
-  border-radius:8px;
-  font-size:22px;
-  font-weight:950;
+.person-name {
+  font-size: 22px;
+  font-weight: 950;
+  text-transform: uppercase;
 }
 
-.info-row{
-  display:grid;
-  grid-template-columns:48px 1fr 1fr;
-  gap:8px;
-  align-items:center;
-  padding:16px 0;
-  border-bottom:1px solid #ddd;
+.role {
+  color: #d80000;
+  font-size: 14px;
+  font-weight: 900;
+  margin-top: 3px;
 }
 
-.info-row:last-child{border-bottom:none}
-
-.info-icon{
-  color:#e00000;
-  font-size:32px;
+.phone {
+  font-size: 21px;
+  font-weight: 950;
+  white-space: nowrap;
 }
 
-.info-label{
-  font-size:15px;
-  font-weight:900;
+.call {
+  display: block;
+  background: #d80000;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 9px;
+  font-size: 18px;
+  font-weight: 950;
+  white-space: nowrap;
 }
 
-.info-value{
-  font-size:20px;
-  font-weight:800;
+.footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 18px;
 }
 
-.emergency{
-  display:grid;
-  grid-template-columns:1.4fr repeat(4,1fr);
-  border:1px solid #ccc;
-  border-radius:12px;
-  overflow:hidden;
-  margin-bottom:24px;
+.footer-info {
+  background: #000;
+  color: white;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-.emergency div{
-  padding:14px 10px;
-  text-align:center;
-  border-right:1px solid #ccc;
-  font-weight:900;
+.footer-carry {
+  background: #d80000;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
 }
 
-.emergency div:last-child{border-right:none}
-
-.num{
-  color:#d60000;
-  font-size:31px;
-  display:block;
-}
-
-.footer{
-  display:grid;
-  grid-template-columns:1fr 420px;
-  margin:0 -32px;
-}
-
-.footer-left{
-  background:#000;
-  color:#fff;
-  padding:18px 32px;
-  font-size:18px;
-  font-weight:700;
-}
-
-.footer-right{
-  background:#e00000;
-  color:#fff;
-  padding:18px 32px;
-  font-size:20px;
-  font-weight:900;
-}
-
-@media(max-width:900px){
-  body{padding:8px}
-  .card{grid-template-columns:1fr}
-  .sidebar{display:none}
-  .main{padding:18px 14px 0}
-  .top{grid-template-columns:1fr}
-  .name{font-size:38px}
-  .alert{font-size:20px}
-  .photo{width:100%;height:260px}
-  .qrbox{max-width:260px}
-  .medgrid,.content,.emergency,.footer{
-    grid-template-columns:1fr;
+@media(max-width: 700px) {
+  body {
+    padding: 0;
+    background: white;
   }
-  .meditem{border-right:none;border-bottom:2px solid #e00000}
-  .meditem:last-child{border-bottom:none}
-  .footer{margin:0 -14px}
+
+  .wrapper {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+  }
+
+  .photo {
+    width: 100%;
+    height: 340px;
+  }
+
+  .name {
+    font-size: 34px;
+  }
+
+  .warning {
+    font-size: 17px;
+  }
+
+  .birth {
+    font-size: 18px;
+  }
+
+  .birth span {
+    font-size: 22px;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .med-box {
+    border-right: none;
+    border-bottom: 2px solid #d80000;
+  }
+
+  .med-box:last-child {
+    border-bottom: none;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    border-right: none !important;
+    border-bottom: 1px solid #ccc !important;
+  }
+
+  .info-box:last-child {
+    border-bottom: none !important;
+  }
+
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+
+  .phone {
+    white-space: normal;
+    font-size: 22px;
+  }
+
+  .call {
+    width: 100%;
+    font-size: 20px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="wrapper">
 
-  <aside class="sidebar">
-    <div class="cross"></div>
-    <div class="vertical-title">NOTFALLKONTAKT</div>
-    <div class="side-text">
-      Im Notfall diese Karte verwenden<br>
-      In an emergency use this card<br>
-      En cas d'urgence utilisez cette carte
-    </div>
-    <div class="heart">♡</div>
-  </aside>
+  <div class="header">
+    <div class="header-title">✚ NOTFALLKONTAKT</div>
+    <div class="header-sub">Im Notfall diese Karte verwenden · In an emergency use this card</div>
+  </div>
 
-  <main class="main">
+  <div class="content">
 
-    <section class="top">
+    <div class="top">
       <div>
-        <div class="alert">WICHTIG! IM NOTFALL BITTE SOFORT KONTAKTIEREN!</div>
-        <div class="name">TIM RENE VETTERKIND</div>
-        <div class="birth">📅 GEBURTSDATUM: <span>15.05.2001</span></div>
+        <div class="warning">WICHTIG! IM NOTFALL BITTE SOFORT KONTAKTIEREN!</div>
+        <div class="name" id="name"></div>
+        <div class="birth">📅 GEBURTSDATUM:<span id="geburtsdatum"></span></div>
       </div>
 
-      <div class="photo">
-        FOTO<br>HIER
-        <!-- Später Bild einfügen:
-        <img src="tim.jpg" alt="Foto von Tim Vetterkind">
-        -->
-      </div>
+      <div class="photo" id="fotoBox">FOTO<br>HIER</div>
+    </div>
 
-      <div class="qrbox">
-        <div class="qr">
-          QR-CODE<br>HIER
-          <!-- Später QR einfügen:
-          <img src="qr.png" alt="QR-Code Notfalldaten">
-          -->
+    <div class="section">
+      <div class="section-title">MEDIZINISCHE INFORMATIONEN</div>
+      <div class="grid-3">
+        <div class="med-box red">
+          <div class="icon">💧</div>
+          <div>
+            <div class="label">Blutgruppe</div>
+            <div class="value" id="blutgruppe"></div>
+          </div>
         </div>
-        <div class="qrlabel">SCAN FÜR ALLE NOTFALLDATEN</div>
-      </div>
-    </section>
 
-    <section class="medgrid">
-      <div class="meditem red">
-        <div class="icon">💧</div>
-        <div>
-          <div class="label">BLUTGRUPPE</div>
-          <div class="value">0+</div>
+        <div class="med-box">
+          <div class="icon">💊</div>
+          <div>
+            <div class="label">Allergien</div>
+            <div class="value" id="allergien"></div>
+          </div>
         </div>
-      </div>
 
-      <div class="meditem">
-        <div class="icon">💊</div>
-        <div>
-          <div class="label">ALLERGIEN</div>
-          <div class="value">KEINE</div>
+        <div class="med-box">
+          <div class="icon">▣</div>
+          <div>
+            <div class="label">Medikamente</div>
+            <div class="value" id="medikamente"></div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="meditem">
-        <div class="icon">▣</div>
-        <div>
-          <div class="label">MEDIKAMENTE</div>
-          <div class="value">KEINE</div>
+    <div class="section">
+      <div class="section-title">WEITERE INFORMATIONEN</div>
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="info-icon">✚</div>
+          <div>
+            <div class="info-title">Krankenkasse</div>
+            <div class="info-value" id="krankenkasse"></div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">⌂</div>
+          <div>
+            <div class="info-title">Wohnadresse</div>
+            <div class="info-value" id="wohnadresse"></div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">🚁</div>
+          <div>
+            <div class="info-title">REGA-Gönner</div>
+            <div class="info-value yes" id="regaGoenner"></div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <div class="info-icon">🪪</div>
+          <div>
+            <div class="info-title">Organspender</div>
+            <div class="info-value yes" id="organspender"></div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="content">
+    <div class="section">
+      <div class="section-title">KONTAKTPERSONEN</div>
+      <div class="contacts">
 
-      <div class="panel">
-        <div class="panel-title">KONTAKTPERSON 1</div>
-        <div class="panel-body">
-          <div class="person">
+        <div class="contact-card">
+          <div class="contact-main">
             <div class="person-icon">☻</div>
             <div>
-              <div class="person-name">LINDA HENKE</div>
-              <div class="role">(EHEPARTNER:IN)</div>
+              <div class="person-name" id="kontakt1Name"></div>
+              <div class="role" id="kontakt1Rolle"></div>
+              <div class="phone" id="kontakt1TelefonAnzeige"></div>
             </div>
           </div>
-          <div class="phone">☎ +41 79 615 00 27</div>
-          <a class="call" href="tel:+41796150027">☎ ANRUFEN</a>
+          <a class="call" id="kontakt1Link">☎ ANRUFEN</a>
         </div>
-      </div>
 
-      <div class="panel">
-        <div class="panel-title">KONTAKTPERSON 2</div>
-        <div class="panel-body">
-          <div class="person">
+        <div class="contact-card">
+          <div class="contact-main">
             <div class="person-icon">☻</div>
             <div>
-              <div class="person-name">STEFAN VETTERKIND</div>
-              <div class="role">(VATER)</div>
+              <div class="person-name" id="kontakt2Name"></div>
+              <div class="role" id="kontakt2Rolle"></div>
+              <div class="phone" id="kontakt2TelefonAnzeige"></div>
             </div>
           </div>
-          <div class="phone">☎ +49 160 90660116</div>
-          <a class="call" href="tel:+4916090660116">☎ ANRUFEN</a>
+          <a class="call" id="kontakt2Link">☎ ANRUFEN</a>
         </div>
-      </div>
 
-      <div class="panel">
-        <div class="panel-title">WEITERE INFORMATIONEN</div>
-        <div class="panel-body">
-          <div class="info-row">
-            <div class="info-icon">🚁</div>
-            <div class="info-label">REGA-GÖNNERNUMMER</div>
-            <div class="info-value">9.003.679.37</div>
+        <div class="contact-card">
+          <div class="contact-main">
+            <div class="person-icon">☻</div>
+            <div>
+              <div class="person-name" id="kontakt3Name"></div>
+              <div class="role" id="kontakt3Rolle"></div>
+              <div class="phone" id="kontakt3TelefonAnzeige"></div>
+            </div>
           </div>
-          <div class="info-row">
-            <div class="info-icon">🛡</div>
-            <div class="info-label">KRANKENKASSE</div>
-            <div class="info-value">SANITAS</div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">⌂</div>
-            <div class="info-label">WOHNADRESSE</div>
-            <div class="info-value">Glasiweg 10<br>6242 Wauwil<br>Schweiz</div>
-          </div>
+          <a class="call" id="kontakt3Link">☎ ANRUFEN</a>
         </div>
+
       </div>
+    </div>
 
-    </section>
+    <div class="footer">
+      <div class="footer-info">ⓘ Diese Informationen sind vertraulich und nur für den Notfall bestimmt.</div>
+      <div class="footer-carry">♥ BITTE DIESE KARTE IMMER BEI SICH TRAGEN.</div>
+    </div>
 
-    <section class="emergency">
-      <div>🚨 NOTRUFNUMMERN<br>SCHWEIZ</div>
-      <div><span class="num">144</span>SANITÄT</div>
-      <div><span class="num">117</span>POLIZEI</div>
-      <div><span class="num">118</span>FEUERWEHR</div>
-      <div><span class="num">1414</span>REGA</div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-left">ⓘ Diese Informationen sind vertraulich und nur für den Notfall bestimmt.</div>
-      <div class="footer-right">♥ BITTE DIESE KARTE IMMER BEI SICH TRAGEN.</div>
-    </footer>
-
-  </main>
+  </div>
 </div>
+
+<script>
+document.getElementById("name").textContent = daten.name;
+document.getElementById("geburtsdatum").textContent = daten.geburtsdatum;
+
+document.getElementById("blutgruppe").textContent = daten.blutgruppe;
+document.getElementById("allergien").textContent = daten.allergien;
+document.getElementById("medikamente").textContent = daten.medikamente;
+
+document.getElementById("krankenkasse").textContent = daten.krankenkasse;
+
+document.getElementById("wohnadresse").innerHTML =
+  daten.wohnadresse1 + "<br>" +
+  daten.wohnadresse2 + "<br>" +
+  daten.wohnadresse3;
+
+document.getElementById("regaGoenner").textContent = daten.regaGoenner;
+document.getElementById("organspender").textContent = daten.organspender;
+
+document.getElementById("kontakt1Name").textContent = daten.kontakt1Name;
+document.getElementById("kontakt1Rolle").textContent = "(" + daten.kontakt1Rolle + ")";
+document.getElementById("kontakt1TelefonAnzeige").textContent = "☎ " + daten.kontakt1TelefonAnzeige;
+document.getElementById("kontakt1Link").href = "tel:" + daten.kontakt1TelefonLink;
+
+document.getElementById("kontakt2Name").textContent = daten.kontakt2Name;
+document.getElementById("kontakt2Rolle").textContent = "(" + daten.kontakt2Rolle + ")";
+document.getElementById("kontakt2TelefonAnzeige").textContent = "☎ " + daten.kontakt2TelefonAnzeige;
+document.getElementById("kontakt2Link").href = "tel:" + daten.kontakt2TelefonLink;
+
+document.getElementById("kontakt3Name").textContent = daten.kontakt3Name;
+document.getElementById("kontakt3Rolle").textContent = "(" + daten.kontakt3Rolle + ")";
+document.getElementById("kontakt3TelefonAnzeige").textContent = "☎ " + daten.kontakt3TelefonAnzeige;
+document.getElementById("kontakt3Link").href = "tel:" + daten.kontakt3TelefonLink;
+
+if (daten.fotoDatei && daten.fotoDatei.trim() !== "") {
+  document.getElementById("fotoBox").innerHTML =
+    '<img src="' + daten.fotoDatei + '" alt="Foto">';
+}
+</script>
 
 </body>
 </html>
